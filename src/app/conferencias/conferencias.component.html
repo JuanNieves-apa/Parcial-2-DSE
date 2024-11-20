@@ -1,0 +1,29 @@
+<div class="container-fluid">
+  <h3 class="bg-primary text-white p-2">Upcoming conferences</h3>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Starts</th>
+            <th scope="col">Ends</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of conferencias; let i = index">
+            <td>{{ c.id }}</td>
+            <td id="nombreConferencia" (click)="seleccionarConferencia(c)"><u>{{ c.name }}</u></td>
+            <td>{{ c.starts }}</td>
+            <td>{{ c.ends }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Upcoming conferences: {{ contarConferenciasProximas() }}</p>
+    </div>
+    <div class="col-md-4">
+      <app-conferencia-detail *ngIf="selectedConferencia" [conferencia]="selectedConferencia"></app-conferencia-detail>
+    </div>
+  </div>
+</div>
